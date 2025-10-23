@@ -1,10 +1,11 @@
 /*
-  Title:  This program scrolls a message on the 4 digit display
-  Author: David Elmo Ross
-  Date:   July 24th, 2025
-  Description: This program uses the setSegments() function to scroll
-               text characters across the 4 digit display.
-               The hex values for these characters are in a char array.
+ Title:       This program scrolls a message on the 4 digit display
+Description: This program uses the setSegments() function to scroll
+             text characters across the 4 digit display.
+             The hex values for these characters are in a char array.
+             You must add 3 HEX values to complete the message:
+                   dEtEctEd  where tEd are missing.
+            
 */
 
 //INCLUDE SECTION
@@ -21,7 +22,7 @@
 TM1637Display segment = TM1637Display(CLK, DIO);
 
 // Global Variables
-uint8_t index_value;          // index_value defined as having 8 bit data values
+uint8_t i;          // index_value defined as having 8 bit data values
 
 unsigned char SEG_DONE[] =    // This has the scrolling message
 {
@@ -39,9 +40,9 @@ void setup()
 
 void loop() 
 {
-  for(index_value=0;index_value<9;++index_value)    // modify loop for 3 more values
+  for(i=0;i<9;++i)             // modify loop for 3 more values
   {
-     segment.setSegments(SEG_DONE+index_value);  
+     segment.setSegments(SEG_DONE+i);  
      delay(500);                         // we are scrolling the message every 0.5 seconds
    }
   
